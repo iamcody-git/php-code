@@ -3,7 +3,7 @@
 require_once "./mysql.php";
 
 $sql = "
-update students set name = 'john' where rollno =1
+update students set name = 'john' and address ='ktm' where rollno =1
 ";
  $result = $connection -> query($sql);
  if ($result){
