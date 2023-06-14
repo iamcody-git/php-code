@@ -1,6 +1,11 @@
 <?php
 
-class BankAccount {
+interface HasLockerBox {
+    public function numOfLockerBox();
+}
+
+
+ abstract class BankAccount {
     protected $amount;
 
     protected $interestRate;
@@ -24,6 +29,11 @@ public  function __construct($openingBalance){
     $this -> amount =$depositAmount;
    }
 
+    public function numOfLockerBox(){
+
+
+   }
+
    public function checkBalance(){
     echo "your balance amount is : " .$this -> amount ."<br>";
    }
@@ -35,7 +45,7 @@ public  function __construct($openingBalance){
 }
 
 
-class FixedDepositAccount extends BankAccount{
+class FixedDepositAccount extends BankAccount implements HasLockerBox{
 
     protected $interestRate = 12;
 public function withdraw($withDrawAmount)
@@ -45,7 +55,7 @@ public function withdraw($withDrawAmount)
 }   
 }
 
-class SavingAccount extends BankAccount{
+class SavingAccount extends BankAccount implements HasLockerBox{
 
     protected $interestRate = 6;
 
@@ -57,8 +67,14 @@ class SavingAccount extends BankAccount{
     }
     parent::withdraw($withDrawAmount);
 }
+public function numOfLockerBox()
+{
+    return 4;
+}
 
 }
+
+
 
 // $JohnBankAccount = new BankAccount();
 // $JohnBankAccount -> withdraw(2000);
@@ -68,8 +84,10 @@ class SavingAccount extends BankAccount{
 // $BenBankAccount -> withdraw(30000);
 
 
-// $BenBankAccount = new FixedDepositAccount(100000);
+// $BenBankAccount = new SavingAccount(100000);
  $BenBankAccount =new FixedDepositAccount(100000);
+ $BenBankAccount =new BankAccount(100000);
+
 $BenBankAccount -> checkBalance();
 // $BenBankAccount -> withdraw(200000);
 $BenBankAccount ->calculateInterest(2);

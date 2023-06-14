@@ -6,7 +6,7 @@ require_once"./mysql.php";
 
 $sql = "select *from students
         where rollno > 2
-";
+       ";
 
 $result = $connection -> query($sql);
 if($result -> num_rows >0){

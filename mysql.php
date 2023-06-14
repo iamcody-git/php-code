@@ -9,7 +9,6 @@ if($connection -> connect_errno!=0){
     die ("connection failed");
 }
 $connection ->select_db($databaseName);
-echo "connection done okay <br>";
 
 /*
 mysql datatype:three essientail types to store
